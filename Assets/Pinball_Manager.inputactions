@@ -1,0 +1,34 @@
+{
+    "name": "Pinball_Manager",
+    "maps": [
+        {
+            "name": "PinballActionMap",
+            "id": "30a5274a-616a-4ecb-a666-74e03a12846a",
+            "actions": [
+                {
+                    "name": "Flipper",
+                    "type": "Button",
+                    "id": "ec0225c3-cbe2-4ccb-8d94-81e2c72d5a55",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9bb84bd9-027a-476c-9f4e-f449c32db501",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flipper",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

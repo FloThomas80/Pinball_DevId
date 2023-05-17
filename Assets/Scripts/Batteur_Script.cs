@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Unity.Netcode;
 
 
-public class Batteur_Script : MonoBehaviour
+public class Batteur_Script : NetworkBehaviour
 {
+    [Header("Input")]
+
+    [SerializeField]
+    private PlayerInput InputSystem;
+
+    [Header("Flipper Prefs")]
 
     [SerializeField]
     private float RotMax_Value = -45f;
@@ -17,12 +24,15 @@ public class Batteur_Script : MonoBehaviour
     private float Originalposition = 0;
     private HingeJoint Hinge;
     private JointSpring Spring;
- 
+
+    [SerializeField]
+    private string _inputButtonName;
+    
+
 
     void Start()
     {
-        
-        Debug.Log("Started");
+
         Hinge = GetComponent<HingeJoint>();
         Hinge.useSpring = true;
         Spring.spring = Strengh;
@@ -30,9 +40,21 @@ public class Batteur_Script : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        //if (!IsOwner)
+        //    return;
+
+
+        if (InputSystem.actions["Flipper"].IsPressed())
         {
-            Spring.targetPosition = RotMax_Value;
+            if (IsHost)
+            {
+                Spring.targetPosition = RotMax_Value;
+            }
+            else if (IsClient)
+            { 
+                Debug.Log("i'm the client !");
+                Spring.targetPosition = -RotMax_Value;
+            }
         }
         else
         {
