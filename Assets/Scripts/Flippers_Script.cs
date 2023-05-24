@@ -7,93 +7,111 @@ using Unity.Netcode;
 
 public class Flippers_Script : NetworkBehaviour
 {
-    
-    [SerializeField] private PlayerInput _playerInput;
-    [SerializeField] private float _speed = 500.0f;
-    [SerializeField] private float _returnSpeed = 5.0f;
-    [SerializeField] private float rotation;
-    [SerializeField] private int flipperId;
-    private Quaternion _initialRotation;
-    private Quaternion _targetRotation;
+    [Header("Setup")]
+    [SerializeField]
+    private float rotationForce = 100f;
+    [SerializeField]
+    private float rotationThreshold = 90f;
 
-    void Start()
+    private bool rotateObject = false;
+    private Quaternion initialRotation;
+    private Rigidbody rb;
+
+    private void Start()
     {
-        _initialRotation = transform.rotation;
-        _targetRotation = _initialRotation;
-
-        Debug.Log(transform.rotation.z);
-        Debug.Log(transform.localEulerAngles);
-        Debug.Log(transform.localRotation);
-        Debug.Log(transform.eulerAngles);
-        Debug.Log(transform.rotation.eulerAngles);
-        Debug.Log(transform.rotation.normalized);
-        Debug.Log(transform.rotation.ToEuler());
-        Debug.Log(transform.rotation.ToEulerAngles());
+        rb = GetComponent<Rigidbody>();
+        initialRotation = rb.rotation; //recupere sa position originale
     }
 
-    void FixedUpdate()
+    private void Update()
     {
-        if (_playerInput.actions["Flipper"].IsPressed())
-
-                _targetRotation = Quaternion.Euler(270, rotation, 0);
-
-        else if (_playerInput.actions["Flipper"].WasReleasedThisFrame())
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            _targetRotation = _initialRotation;
+            rotateObject = true;
         }
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, _speed * Time.deltaTime);
-
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            rotateObject = false;
+            rb.angularVelocity = Vector3.zero; // plus de vitesse
+            rb.rotation = initialRotation; //retour a la position originale
+        }
     }
-    
+
+    private void FixedUpdate()
+    {
+        if (rotateObject)
+        {
+            rb.AddTorque(Vector3.up * rotationForce); //si la touche est pressée et donc le bool true alors : on add torque 
+
+            // Check if rotation threshold is reached
+            if (Quaternion.Angle(rb.rotation, initialRotation) >= rotationThreshold) //si l'angle maximum est atteinte alors on stop la vitesse
+            {
+                rotateObject = false;
+                rb.angularVelocity = Vector3.zero;
+            }
+        }
+    }
 }
+    
+    //[SerializeField] private PlayerInput _playerInput;
+    //[SerializeField] private float _speed = 500.0f;
+    ////[SerializeField] private float _returnSpeed = 5.0f;
+    //[SerializeField] private float _rotation;
+    //[SerializeField] private float _torqueForce;
+    //private Quaternion _initialRotation;
+    //private Quaternion _targetRotation;
+    //private Rigidbody _rb;
+    //private bool firstPassage = true;
+
+    //void Start()
+    //{
+    //    _initialRotation = transform.rotation;
+    //    _targetRotation = _initialRotation;
+    //    _rb = GetComponent<Rigidbody>();
+    //    _rb.mass = 1000f;
+    //}
+
+    //void FixedUpdate()
+    //{
+
+
+    //    if (_playerInput.actions["Flipper"].IsPressed())
+    //    {
+    //        if(firstPassage)
+    //        { 
+    //        _rb.AddTorque(transform.up * _torqueForce, ForceMode.Acceleration);
+    //        }
+    //    }
+    //    else if (_playerInput.actions["Flipper"].WasReleasedThisFrame())
+    //    {
+    //        //_rb.constraints = RigidbodyConstraints.None;
+    //        //_rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
+    //        //_rb.AddTorque(transform.up * _torqueForce, ForceMode.Force);
+    //        firstPassage = false;
+    //        transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, _speed * Time.deltaTime);
+    //    }
+
+    //    //transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, _speed * Time.deltaTime);
+    //}
+
+    //private void OnTriggerEnter(Collider blocks)
+    //{
+    //    if (blocks.gameObject.layer == LayerMask.NameToLayer("Blocks"))
+    //    {
+    //        Debug.Log("i'm in dude !");
+    //        firstPassage = false;
+    //        _rb.angularVelocity = Vector3.zero;
+    //    }
+    //    }
+    ////private void OnTriggerExit()
+    ////{
+    ////    Debug.Log("i'm out moth#{@^é'+er !");
+    ////    firstPassage = true;
+    ////    _rb.constraints = RigidbodyConstraints.FreezeAll;
+        
+    ////}
+
+
 //    [Header("Input")]
-//    private float time = 0;
-//    [SerializeField]
-//    private PlayerInput InputSystem;
-
-//    [Header("Flipper Prefs")]
-//    [SerializeField]
-//    private AnimationCurve FlippersAnim;
-//    [SerializeField]
-//    private float RotMax_Value = -45f;
-//    [SerializeField]
-//    private float _speed = 0.1f;
-
-//    [SerializeField]
-//    private string _inputButtonName;
-
-
-
-//    void Start()
-//    {
-//        FlippersAnim = new AnimationCurve();
-//        //FlippersAnim.ClearKeys();
-
-//        float minAnimValue = transform.localEulerAngles.z;
-
-//        Debug.Log("local euler : " + transform.localRotation.eulerAngles);
-
-//        float maxAnimValue = transform.localEulerAngles.z + RotMax_Value;
-
-//        FlippersAnim.AddKey(0, minAnimValue);
-//        FlippersAnim.AddKey(1, (maxAnimValue));
-
-//        Debug.Log("my first key is : " + FlippersAnim.Evaluate(0));
-//        Debug.Log("my last key is : " + FlippersAnim.Evaluate(1));
-//    }
-//    void Update()
-//    {
-//        if (InputSystem.actions["Flipper"].IsPressed())
-//        {
-//            if (time < 1)
-//            {
-//                time += _speed * Time.deltaTime;
-
-//                transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, FlippersAnim.Evaluate(time));
-//            }
-//            else
-//                time = 1;
-//        }
-//    }
-//}
