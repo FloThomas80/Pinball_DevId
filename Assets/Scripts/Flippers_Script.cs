@@ -7,15 +7,21 @@ using Unity.Netcode;
 
 public class Flippers_Script : NetworkBehaviour
 {
+
     [Header("Setup")]
     [SerializeField]
     private float rotationForce = 100f;
     [SerializeField]
     private float rotationThreshold = 90f;
+    [SerializeField]
+    private GameObject LeftFlip;
+    [SerializeField]
+    private GameObject RightFlip;
 
     private bool rotateObject = false;
     private Quaternion initialRotation;
     private Rigidbody rb;
+
 
     private void Start()
     {
@@ -25,32 +31,40 @@ public class Flippers_Script : NetworkBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rotateObject = true;
-        }
+        //if (IsHost)
+        //{
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rotateObject = true;
+            }
 
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            rotateObject = false;
-            rb.angularVelocity = Vector3.zero; // plus de vitesse
-            rb.rotation = initialRotation; //retour a la position originale
-        }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                rotateObject = false;
+                rb.angularVelocity = Vector3.zero; // plus de vitesse
+                rb.rotation = initialRotation; //retour a la position originale
+            }
+        //}
     }
 
     private void FixedUpdate()
     {
-        if (rotateObject)
-        {
-            rb.AddTorque(Vector3.up * rotationForce); //si la touche est pressée et donc le bool true alors : on add torque 
+        //if (IsHost)
+        //{
+            rb = LeftFlip.GetComponent<Rigidbody>();
 
-            // Check if rotation threshold is reached
-            if (Quaternion.Angle(rb.rotation, initialRotation) >= rotationThreshold) //si l'angle maximum est atteinte alors on stop la vitesse
+            if (rotateObject)
             {
-                rotateObject = false;
-                rb.angularVelocity = Vector3.zero;
+                rb.AddTorque(Vector3.up * rotationForce); //si la touche est pressée et donc le bool true alors : on add torque 
+
+                // Check if rotation threshold is reached
+                if (Quaternion.Angle(rb.rotation, initialRotation) >= rotationThreshold) //si l'angle maximum est atteinte alors on stop la vitesse
+                {
+                    rotateObject = false;
+                    rb.angularVelocity = Vector3.zero;
+                }
             }
-        }
+        //}
     }
 }
     
