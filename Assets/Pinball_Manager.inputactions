@@ -27,17 +27,6 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "9bb84bd9-027a-476c-9f4e-f449c32db501",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Flipper",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4a0a850c-e23f-4dd5-a7bb-60855605c8ed",
                     "path": "<Mouse>/leftButton",
                     "interactions": "Hold",
@@ -51,6 +40,17 @@
                     "name": "",
                     "id": "0a131235-d741-4d53-a233-fa1217cd0be5",
                     "path": "<Gamepad>/leftStick/down",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PinballLauncher",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e16b8e6b-9685-416f-8ce4-ef5922eaa8ae",
+                    "path": "<Keyboard>/space",
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "",

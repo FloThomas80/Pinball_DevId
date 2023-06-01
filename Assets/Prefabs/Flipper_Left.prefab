@@ -12,11 +12,8 @@ GameObject:
   - component: {fileID: 5364643961430446465}
   - component: {fileID: 238906479133223055}
   - component: {fileID: 2582879669649643091}
-  - component: {fileID: 1133856270947660998}
   - component: {fileID: 3299664569834442450}
   - component: {fileID: 1965601601656910225}
-  - component: {fileID: -7143612436047063156}
-  - component: {fileID: 7215483120026182956}
   m_Layer: 0
   m_Name: Flipper_Left
   m_TagString: Untagged
@@ -104,25 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationForce: -20000
   rotationThreshold: 45
---- !u!114 &1133856270947660998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2694601245087717969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
+  LeftFlip: {fileID: 2694601245087717969}
+  RightFlip: {fileID: 0}
 --- !u!54 &3299664569834442450
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -172,45 +152,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -114699674525647331, guid: e95036931bd821a42a02495b6ed57d8d, type: 3}
---- !u!114 &-7143612436047063156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2694601245087717969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e5cca9edf6b001458e7b15810870d68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncPositionX: 1
-  SyncPositionY: 1
-  SyncPositionZ: 1
-  SyncRotAngleX: 1
-  SyncRotAngleY: 1
-  SyncRotAngleZ: 1
-  SyncScaleX: 1
-  SyncScaleY: 1
-  SyncScaleZ: 1
-  PositionThreshold: 0.001
-  RotAngleThreshold: 0.01
-  ScaleThreshold: 0.01
-  UseQuaternionSynchronization: 0
-  UseQuaternionCompression: 0
-  UseHalfFloatPrecision: 0
-  InLocalSpace: 0
-  Interpolate: 1
-  SlerpPosition: 0
---- !u!114 &7215483120026182956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2694601245087717969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
