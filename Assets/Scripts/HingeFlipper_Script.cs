@@ -35,6 +35,7 @@ public class HingeFlipper_Script : MonoBehaviour
 
 
     private HingeJoint Hinge;
+    private bool SoundPlayed = false;
 
 
 
@@ -58,10 +59,17 @@ public class HingeFlipper_Script : MonoBehaviour
 
         //Debug.Log(_flipperName);
             Spring.targetPosition = _maxPosition;
+            if(SoundPlayed == false)
+            { 
+                SoundController_Script.Instance.LaunchFlipperSound();
+                SoundPlayed = true;
+
+            }
         }
         else
         {
             Spring.targetPosition = _originalPosition;
+            SoundPlayed = false;
         }
 
         Hinge.spring = Spring;

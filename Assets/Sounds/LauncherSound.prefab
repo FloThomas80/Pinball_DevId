@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1615051955339594978}
   - component: {fileID: 9149419724939821573}
   m_Layer: 0
-  m_Name: Sound1
+  m_Name: LauncherSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 16538a08eecb39141adc19ccf1d24e37, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d0bda3394ada33445820a98593a1d63c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

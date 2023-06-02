@@ -10,8 +10,12 @@ public class SoundController_Script : MonoBehaviour
     /*
      * Créer le gameobject avec l'audiosource intégré
      */
-    public GameObject mSound1;
-    public GameObject mSound2;
+    [SerializeField]
+    private GameObject mBumperSound;
+    [SerializeField]
+    private GameObject mLauncherSound;
+    [SerializeField]
+    private GameObject mFlipperSound;
 
     public static SoundController_Script Instance //instance called
     {
@@ -49,10 +53,14 @@ public class SoundController_Script : MonoBehaviour
     public void LaunchBumperSound1()
     {
         // Indiquer le destroy avec un temps de delete
-        Destroy(Instantiate(mSound1), 2);
+        Destroy(Instantiate(mBumperSound), 2);
     }
-    public void LaunchSound2()
+    public void LaunchLauncherSound2()
     {
-        Destroy(Instantiate(mSound2), 2);
+        Destroy(Instantiate(mLauncherSound), 3);
+    }
+    public void LaunchFlipperSound()
+    {
+        Destroy(Instantiate(mFlipperSound), 3);
     }
 }
