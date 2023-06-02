@@ -33,9 +33,7 @@ public class Scoring : MonoBehaviour
 
 void Start()
 {
-    //_scoreCurrent = GameManagerGlobal.Instance.GetScrore();
-    //_scoreCurrent = GameManagerGlobal.Instance.GetScrore();
-    _scoreCurrent = GameManagerGlobal.Instance._score;
+    _scoreCurrent = ScoreController_Script.Instance.GetScrore();
     UpdateScore();
 }
 

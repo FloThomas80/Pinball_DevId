@@ -26,17 +26,6 @@ public class GameManagerGlobal : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
-
-
-    [SerializeField] private ScoreControllerCopy scoreController;
-    public int _score;
-
-    // private void Start(){
-    //     //_score = scoreController.GetScore();
-    // }
-    // private update(){
-    //     _score = scoreController.GetScore();
-    // }
     
     
 }

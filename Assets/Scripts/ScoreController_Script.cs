@@ -60,4 +60,9 @@ public class ScoreController_Script : MonoBehaviour
             scoreText.text = "Score : " + score.ToString();
         }
     }
+
+    public int GetScrore() //get the score
+    {
+        return score;
+    }
 }
