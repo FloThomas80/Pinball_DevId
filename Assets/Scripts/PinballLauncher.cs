@@ -1,60 +1,83 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PinballLauncher : MonoBehaviour
 {
-    [SerializeField] private PlayerInput _inputs;
-
-    private Vector3 _origin;
-    private Vector3 _tensionMax;
-    private float _recoilLength = 1f;
-
-    private float _power;
-    //private float _powerTest = 5f;
-
-    private Vector3 _currentPosition;
+    [Header("Inputs")]
+    [SerializeField] 
+    private PlayerInput _inputs;
 
 
+
+    [Header("Power Settings")]
+    [SerializeField]
+    private float _powerMax = 100f;
+    private float _power = 0f;
+    private float _powerMin = 0f;
+
+    [Header("Ball")]
     private Rigidbody _rb;
+    private GameObject BallInLauncher = null;
+    private bool BallReady = true;
 
-    private bool _isLaunching;
-    void Start()
+    [Header("Launcher")]
+    [SerializeField]
+    private GameObject Launcher;
+    [SerializeField]
+    private GameObject _spring;
+
+    private Vector3 _launcherOrigin;
+    private Vector3 _launcherMaxPostion;
+
+    private Vector3 _springOrigin;
+    private Vector3 _springMaxPostion;
+
+    private void Start()
     {
-        _origin = transform.position;
-        _rb = GetComponent<Rigidbody>();
-        _rb.Sleep();
-        _tensionMax.z = transform.position.z - _recoilLength;
+        _power = _powerMin;
+        _launcherOrigin = Launcher.transform.position;
+        _launcherMaxPostion = new (_launcherOrigin.x, _launcherOrigin.y, _launcherOrigin.z - 3);
+        _springOrigin = _spring.transform.localScale;
+        _springMaxPostion = new(_springOrigin.x, _springOrigin.y, _springOrigin.z + 0.7f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        if (!_isLaunching)
+        if (BallReady)
         {
-
-            if (_inputs.actions["PinballLauncher"].IsPressed() && transform.position.z >= _tensionMax.z)
+            if (_inputs.actions["PinballLauncher"].IsPressed() && BallReady)
             {
-                transform.Translate(-Vector3.up * Time.deltaTime);
-                _currentPosition.z = transform.position.z;
-                _power = _origin.z - _currentPosition.z;
+
+                if (_power <= _powerMax)
+                {
+                    _power += 100 * Time.deltaTime;
+                    Launcher.transform.position = Vector3.MoveTowards(_launcherOrigin, _launcherMaxPostion, _power/10);
+                    _spring.transform.localScale = Vector3.Lerp(_springOrigin, _springMaxPostion, _power / 30);
+
+                }
             }
             else if (_inputs.actions["PinballLauncher"].WasReleasedThisFrame())
             {
-                _isLaunching = true;
-                _rb.AddForce(Vector3.forward * _power * 100, ForceMode.Impulse);
-            }
-        }
-        else
-        {
-            if (transform.position.z < _origin.z)
-            {
-                transform.Translate(Vector3.up * Time.deltaTime);
-            }
-            else
-            {
-                _isLaunching = false;
-                _rb.Sleep();
+                //Debug.Log("To the moooon ! " + _rb);
+                _rb.AddForce(-transform.forward * _power * 100f);
+                Launcher.transform.position = Vector3.MoveTowards( _launcherMaxPostion, _launcherOrigin, 100);
+                _spring.transform.localScale = Vector3.Lerp(_springMaxPostion, _springOrigin,  100);
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        BallReady = true;
+        BallInLauncher = other.gameObject;
+        _rb = BallInLauncher.GetComponent<Rigidbody>();
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        BallReady = false;
+        _power = _powerMin;
+        _rb = null;
+    }
 }
+

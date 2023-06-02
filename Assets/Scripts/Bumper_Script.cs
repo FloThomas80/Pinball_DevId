@@ -5,7 +5,9 @@ using UnityEngine;
 public class Bumper_Script : MonoBehaviour
 {
     [SerializeField]
-    private int bumperForce;
+    private int _bumperForce;
+    [SerializeField]
+    private int _bumperScore;
     private void OnCollisionEnter(Collision collision)
     {
         Rigidbody ballRigidbody = collision.gameObject.GetComponent<Rigidbody>();
@@ -17,7 +19,7 @@ public class Bumper_Script : MonoBehaviour
             forceDirection = forceDirection.normalized;
             forceDirection = new Vector3 (forceDirection.x, 0, forceDirection.z);
 
-            ballRigidbody.AddForce(forceDirection * bumperForce * 10);
+            ballRigidbody.AddForce(forceDirection * _bumperForce * 10);
         }
     }
 }
