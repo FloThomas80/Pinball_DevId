@@ -12,16 +12,15 @@ public class ScoreController_Script : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI scoreText;
-    public static ScoreController_Script Instance
+    public static ScoreController_Script Instance //instance call
     {
-        get
+        get 
+
         {
-            // If the instance is null, find the existing instance or create a new one
             if (instance == null)
             {
                 instance = FindObjectOfType<ScoreController_Script>();
 
-                // If no instance exists in the scene, create a new GameObject with the ScoreManager component
                 if (instance == null)
                 {
                     GameObject scoreManagerObject = new GameObject("ScoreManager");
@@ -32,12 +31,9 @@ public class ScoreController_Script : MonoBehaviour
             return instance;
         }
     }
-
-    // Awake is called when the script instance is being loaded
     private void Awake()
     {
-        // Ensure only one instance of the score manager exists
-        if (instance != null && instance != this)
+        if (instance != null && instance != this) //singleton, only one instance exist ?
         {
             Destroy(gameObject);
             return;
@@ -45,8 +41,7 @@ public class ScoreController_Script : MonoBehaviour
 
         instance = this;
 
-        // Keep the score manager across scene changes
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);//don't destroy me ! i'm THE SCORE !
     }
     public void IncreaseScore(int value) //update Score
     {

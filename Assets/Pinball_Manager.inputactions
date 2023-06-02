@@ -87,6 +87,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d1c66a23-51cc-43a3-89ef-342b213b36a1",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PinballLauncher",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "85fc13dd-da05-47f5-b73c-5ed2280b2c52",
                     "path": "<Keyboard>/s",
                     "interactions": "",
