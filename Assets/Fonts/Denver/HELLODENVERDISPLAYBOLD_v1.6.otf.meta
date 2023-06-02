@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8d20a0b475636944e908b788e5d245b5
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - HELLO DENVER DISPLAY BOLD
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: ba05ab382e67dd44db6eba7c11394ff0, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

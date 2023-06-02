@@ -22,6 +22,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SaveTest",
+                    "type": "Button",
+                    "id": "385ca1e8-751f-4672-b0ab-ce36bedd0570",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LoadTest",
+                    "type": "Button",
+                    "id": "8e022a1a-4b82-4392-8820-50e22459e8be",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ValidatePlayerName",
+                    "type": "Button",
+                    "id": "01b2b2de-75c9-4bb8-8974-a2adf8a0f7e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -55,6 +82,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "PinballLauncher",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "85fc13dd-da05-47f5-b73c-5ed2280b2c52",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SaveTest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a76de5fb-c636-40ba-9e5a-3208ead06ff1",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LoadTest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a415add3-2ba1-4457-9a2a-14aff7dd8552",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ValidatePlayerName",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
