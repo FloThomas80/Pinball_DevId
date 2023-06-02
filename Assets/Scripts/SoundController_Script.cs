@@ -11,6 +11,8 @@ public class SoundController_Script : MonoBehaviour
      * Créer le gameobject avec l'audiosource intégré
      */
     [SerializeField]
+    private GameObject mBackGroundMusic;
+    [SerializeField]
     private GameObject mBumperSound;
     [SerializeField]
     private GameObject mLauncherSound;
@@ -32,7 +34,6 @@ public class SoundController_Script : MonoBehaviour
                     instance = SoundController_Script.AddComponent<SoundController_Script>();
                 }
             }
-
             return instance;
         }
     }
@@ -46,6 +47,7 @@ public class SoundController_Script : MonoBehaviour
         }
 
         instance = this;
+        Instantiate(mBackGroundMusic);
 
         DontDestroyOnLoad(gameObject);//don't destroy me, i'm THE SOUND Controller ! (what would be a sailor without a good song ?)
     }
