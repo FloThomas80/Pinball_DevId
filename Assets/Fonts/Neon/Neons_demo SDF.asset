@@ -2591,7 +2591,6 @@ Material:
   m_Parent: {fileID: 2100000, guid: 701d440f8fef3734b857ee15d2f44c75, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - BEVEL_ON
   - GLOW_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -2612,10 +2611,10 @@ Material:
     m_Floats:
     - _CullMode: 2
     - _Diffuse: 0.5
-    - _GlowInner: 0.05
-    - _GlowOffset: 0
-    - _GlowOuter: 0.05
-    - _GlowPower: 0.75
+    - _GlowInner: 0.186
+    - _GlowOffset: 0.282
+    - _GlowOuter: 0.69
+    - _GlowPower: 0.408
     - _GradientScale: 6
     - _LightAngle: 3.1416
     - _ScaleRatioA: 0.8333333
@@ -2624,7 +2623,7 @@ Material:
     - _StencilWriteMask: 6
     - _WeightBold: 0.5
     m_Colors:
-    - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 0.2313726, g: 1, b: 0, a: 0.5}
-    - _SpecularColor: {r: 0.09620416, g: 1, b: 0, a: 1}
+    - _FaceColor: {r: 1.6603774, g: 0, b: 0, a: 1}
+    - _GlowColor: {r: 1, g: 0.0778829, b: 0.04150939, a: 0.5}
+    - _SpecularColor: {r: 0.80784315, g: 0, b: 0.067326546, a: 1}
   m_BuildTextureStacks: []

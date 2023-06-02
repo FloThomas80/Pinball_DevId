@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2547286801255104062}
   - component: {fileID: 1155270835453663229}
   - component: {fileID: 6724642714646988116}
-  - component: {fileID: 4044005689905825815}
+  - component: {fileID: 8922072005521761240}
   m_Layer: 0
   m_Name: ChamferCyl001
   m_TagString: Untagged
@@ -97,8 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bafc72934927324c96d89a87dc42876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bumperForce: 100
---- !u!136 &4044005689905825815
+  _bumperForce: 500
+  _bumperScore: 10
+--- !u!136 &8922072005521761240
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,10 +118,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.9819757
-  m_Height: 3.9639523
+  m_Radius: 2.05
+  m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0.47623694}
+  m_Center: {x: 0, y: -0.0000038146973, z: 0.47623694}
 --- !u!1 &3846561032728489124
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +154,7 @@ Transform:
   m_Children:
   - {fileID: 1748348369549166659}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &6491401946943106360
 MeshFilter:

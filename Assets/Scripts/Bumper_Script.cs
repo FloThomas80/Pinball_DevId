@@ -20,6 +20,8 @@ public class Bumper_Script : MonoBehaviour
             forceDirection = new Vector3 (forceDirection.x, 0, forceDirection.z);
 
             ballRigidbody.AddForce(forceDirection * _bumperForce * 10);
+
+            ScoreController_Script.Instance.IncreaseScore(_bumperScore);
         }
     }
 }
