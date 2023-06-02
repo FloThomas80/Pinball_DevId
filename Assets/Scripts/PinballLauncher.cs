@@ -61,6 +61,7 @@ public class PinballLauncher : MonoBehaviour
             {
                 //Debug.Log("To the moooon ! " + _rb);
                 _rb.AddForce(-transform.forward * _power * 100f);
+                SoundController_Script.Instance.LaunchLauncherSound2();
                 Launcher.transform.position = Vector3.MoveTowards( _launcherMaxPostion, _launcherOrigin, 100);
                 _spring.transform.localScale = Vector3.Lerp(_springMaxPostion, _springOrigin,  100);
             }
