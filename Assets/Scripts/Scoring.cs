@@ -11,7 +11,7 @@ public class Scoring : MonoBehaviour
     [SerializeField] private TMP_InputField _inputPlayerName;
     private string _playerNameValue;
     private bool _isPlayerNameValidated = false;
-    private int _scoreCurrent = 8000;
+    private int _scoreCurrent = 0;
 
 
     private TextMeshProUGUI _top;
@@ -33,6 +33,9 @@ public class Scoring : MonoBehaviour
 
 void Start()
 {
+    //_scoreCurrent = GameManagerGlobal.Instance.GetScrore();
+    //_scoreCurrent = GameManagerGlobal.Instance.GetScrore();
+    _scoreCurrent = GameManagerGlobal.Instance._score;
     UpdateScore();
 }
 
@@ -76,6 +79,7 @@ void FixedUpdate()
         Debug.Log(filePath);
         //Insert data into the file
         System.IO.File.WriteAllText(filePath, json);
+         Debug.Log(json);
     }
 
     public void LoadFromJson()
@@ -86,6 +90,7 @@ void FixedUpdate()
         string json = System.IO.File.ReadAllText(filePath);
         //Convert the data into a Results object
         results = JsonUtility.FromJson<Results>(json);
+        Debug.Log(filePath);
     }
 
     public void UpdateScore(){

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LooseArea_Script : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class LooseArea_Script : MonoBehaviour
 
     private Transform SpawnPoint;
 
+    [SerializeField] private int life = 3;
+
     private void Start()
     {
-        SpawnPoint = _ballPrefab.transform;
+        life = 3;
+        SpawnPoint = _ballPrefab.transform;        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +26,20 @@ public class LooseArea_Script : MonoBehaviour
             Debug.Log("Ball as entered the area" + other);
             Destroy(other, 5);
 
-            Instantiate(_ballPrefab, SpawnPoint.position, SpawnPoint.rotation);
+            if(life!=0){
+                Instantiate(_ballPrefab, SpawnPoint.position, SpawnPoint.rotation);
+            } 
+            else
+            {
+                GameOver();
+            }           
+            life--;
         }
+    }
+
+    private void GameOver()
+    {       
+            //load scene scores
+            SceneManager.LoadScene("Scores");        
     }
 }
