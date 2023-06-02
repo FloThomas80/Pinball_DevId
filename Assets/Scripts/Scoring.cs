@@ -131,35 +131,30 @@ void FixedUpdate()
 
     public void DisplayRank(){
 
-        for(int i = 0; i < maxResults; i++){
-        //Instantiate Prefab in parent
-        _prefabInst = Instantiate(_prefabRef,_uiContainer);
+        for(int i = 0; i < maxResults; i++)
+        {
+            //Instantiate Prefab in parent
+            _prefabInst = Instantiate(_prefabRef,_uiContainer);
 
-        //Get Textmesh Component Rank in prefab and set json value
-        TextMeshProUGUI _textTopPrefab = _prefabInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>(); 
-              
-        _textTopPrefab.text = results.scores[i].Rank;
-        _textTopPrefab.color = _RankColors[i]; 
-         //_textTopPrefab.color = _RankColors[i];
-         //_textTopPrefab.color = _RankColors[i];
-        //Debug.Log(_textTopPrefab.color);
-       
-
-        
-        //Get Input Component PlayerName Rank in prefab and set json value
-        TMP_InputField _inputNamePrefab = _prefabInst.transform.GetChild(1).GetComponent<TMP_InputField>();
-        Debug.Log(_inputNamePrefab);
-        _inputNamePrefab.text = results.scores[i].PlayerName;
-
-        //Get Input Component PlayerName Rank in prefab and set json value
-        TextMeshProUGUI _scorePrefab = _prefabInst.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-        _scorePrefab.color = _RankColors[i];
-        Debug.Log(_scorePrefab.color);
-        // _scorePrefab.color = Color.red;
-        _scorePrefab.text = results.scores[i].score.ToString();   
+            //Get Textmesh Component Rank in prefab and set json value
+            TextMeshProUGUI _textTopPrefab = _prefabInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>(); 
+                
+            _textTopPrefab.text = results.scores[i].Rank;
+            _textTopPrefab.color = _RankColors[i];
         
 
-        }
+            
+            //Get Input Component PlayerName Rank in prefab and set json value
+            TMP_InputField _inputNamePrefab = _prefabInst.transform.GetChild(1).GetComponent<TMP_InputField>();
+            _inputNamePrefab.text = results.scores[i].PlayerName;
+            _inputNamePrefab.textComponent.color = _RankColors[i];
+
+
+            //Get Input Component PlayerName Rank in prefab and set json value
+            TextMeshProUGUI _scorePrefab = _prefabInst.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+            _scorePrefab.faceColor = _RankColors[i];
+            _scorePrefab.text = results.scores[i].score.ToString();
+         }
     }
 }
     [System.Serializable]

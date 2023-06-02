@@ -33,5 +33,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _GradientScale: 6
-    m_Colors: []
+    - _OutlineWidth: 0.438
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioC: 0.6770833
+    - _UnderlayDilate: -0.56
+    - _UnderlayOffsetX: 0.01
+    - _UnderlaySoftness: 1
+    m_Colors:
+    - _OutlineColor: {r: 1, g: 0, b: 0, a: 0.4745098}
+    - _UnderlayColor: {r: 1, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
