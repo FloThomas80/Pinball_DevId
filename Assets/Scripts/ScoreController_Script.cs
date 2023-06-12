@@ -8,7 +8,7 @@ public class ScoreController_Script : MonoBehaviour
     private static ScoreController_Script instance;
 
     private int score;
-    public int Score => score;
+    public int Score => score; //geter (getteur getter ??)  ^^ !
 
     [SerializeField]
     private TextMeshProUGUI scoreText;

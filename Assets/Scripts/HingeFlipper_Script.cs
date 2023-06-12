@@ -37,9 +37,6 @@ public class HingeFlipper_Script : MonoBehaviour
     private HingeJoint Hinge;
     private bool SoundPlayed = false;
 
-
-
-
     void Start()
     {
 
