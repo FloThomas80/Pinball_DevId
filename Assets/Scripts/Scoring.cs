@@ -20,7 +20,9 @@ public class Scoring : MonoBehaviour
 
     [SerializeField] private Transform _uiContainer;
     [SerializeField] private GameObject _prefabRef;
-    private GameObject _prefabInst;
+    [SerializeField] private GameObject _prefabButtons;
+    private GameObject _prefabInst; //Stock prefab instance
+    private GameObject _prefabInstButtons; //Stock prefab instance
 
     [SerializeField] private int maxResults = 5;
     //[SerializeField] List<GameObject> _panels = new List<GameObject>();
@@ -158,6 +160,7 @@ void FixedUpdate()
             _scorePrefab.faceColor = _RankColors[i];
             _scorePrefab.text = results.scores[i].score.ToString();
          }
+        _prefabInstButtons = Instantiate(_prefabButtons,_uiContainer);
     }
 }
     [System.Serializable]
